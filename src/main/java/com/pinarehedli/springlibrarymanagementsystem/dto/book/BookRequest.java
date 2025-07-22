@@ -21,10 +21,10 @@ public class BookRequest {
 	@ISBN
 	private String isbn;
 
-	@DecimalMin(value = "0.0")
+	@DecimalMin("0.0")
 	private BigDecimal price;
 
-	@Min(value = 0)
+	@Min(0)
 	private Integer stock;
 
 	@NotNull()
