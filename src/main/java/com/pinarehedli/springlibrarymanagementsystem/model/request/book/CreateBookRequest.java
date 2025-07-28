@@ -1,9 +1,9 @@
-package com.pinarehedli.springlibrarymanagementsystem.dto.book;
+package com.pinarehedli.springlibrarymanagementsystem.model.request.book;
 
 import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
 import org.hibernate.validator.constraints.ISBN;
 
@@ -24,7 +24,7 @@ public class BookRequest {
 	@DecimalMin("0.0")
 	private BigDecimal price;
 
-	@Min(0)
+	@Positive
 	private Integer stock;
 
 	@NotNull()

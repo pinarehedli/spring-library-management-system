@@ -1,4 +1,4 @@
-package com.pinarehedli.springlibrarymanagementsystem.dto.auth;
+package com.pinarehedli.springlibrarymanagementsystem.model.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

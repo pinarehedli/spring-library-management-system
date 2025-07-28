@@ -1,6 +1,5 @@
-package com.pinarehedli.springlibrarymanagementsystem.dto.auth;
+package com.pinarehedli.springlibrarymanagementsystem.model.dto.auth;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,13 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
-
-	@NotNull
+public class LoginRequest {
 	private String username;
-
-	@NotNull
 	private String password;
-
 }
-

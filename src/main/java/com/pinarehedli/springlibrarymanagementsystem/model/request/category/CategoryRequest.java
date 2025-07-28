@@ -1,4 +1,4 @@
-package com.pinarehedli.springlibrarymanagementsystem.dto.category;
+package com.pinarehedli.springlibrarymanagementsystem.model.dto.category;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

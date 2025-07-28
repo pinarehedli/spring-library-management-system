@@ -1,4 +1,4 @@
-package com.pinarehedli.springlibrarymanagementsystem.dto.auth;
+package com.pinarehedli.springlibrarymanagementsystem.model.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginRequest {
-	private String username;
-	private String password;
+public class AuthResponse {
+	private String accessToken;
+	private String refreshToken;
 }

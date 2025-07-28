@@ -40,9 +40,9 @@ public class User {
 	@Column(unique = true)
 	private String password;
 
-	private BigDecimal balance;
-
 	private BigDecimal fine;
+
+	private BigDecimal balance;
 
 	@OneToMany(mappedBy = "user")
 	private List<Transaction> transactions;
