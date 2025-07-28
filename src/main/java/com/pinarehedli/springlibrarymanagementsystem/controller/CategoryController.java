@@ -1,13 +1,14 @@
 package com.pinarehedli.springlibrarymanagementsystem.controller;
 
-import com.pinarehedli.springlibrarymanagementsystem.dto.category.CategoryDTO;
-import com.pinarehedli.springlibrarymanagementsystem.dto.category.CategoryRequest;
+import com.pinarehedli.springlibrarymanagementsystem.model.dto.category.CategoryDTO;
+import com.pinarehedli.springlibrarymanagementsystem.model.request.category.CategoryRequest;
 import com.pinarehedli.springlibrarymanagementsystem.service.CategoryService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path = "/v1/categories")
+@RequestMapping(path = "/api/categories")
 public class CategoryController {
 
 	private final CategoryService categoryService;
@@ -36,22 +37,22 @@ public class CategoryController {
 		return ResponseEntity.ok(categoryService.findCategoryById(id));
 	}
 
-	// ADMIN
 	@PostMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<CategoryDTO> addCategory(@Valid @RequestBody CategoryRequest categoryRequest) {
 		return new ResponseEntity<>(categoryService.addCategory(categoryRequest), HttpStatus.CREATED);
 	}
 
-	// ADMIN
 	@PutMapping("/{id}")
-	public ResponseEntity<CategoryDTO> updateCategory(@RequestBody CategoryRequest request, @Min(1) @PathVariable Long id) {
+	@PreAuthorize("hasRole('ADMIN')")
+	public ResponseEntity<CategoryDTO> updateCategory(@Valid @RequestBody CategoryRequest request, @Min(1) @PathVariable Long id) {
 		return new ResponseEntity<>(categoryService.updateCategory(request, id), HttpStatus.NO_CONTENT);
 	}
 
-	// ADMIN
 	@DeleteMapping("/{id}")
-	public String deleteCategory(@Min(1) @PathVariable Long id) {
+	@PreAuthorize("hasRole('ADMIN')")
+	public ResponseEntity<String> deleteCategory(@Min(1) @PathVariable Long id) {
 		categoryService.deleteCategory(id);
-		return "Category deleted successfully!";
+		return ResponseEntity.ok("Category deleted successfully!");
 	}
 }
