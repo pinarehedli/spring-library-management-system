@@ -1,7 +1,6 @@
-package com.pinarehedli.springlibrarymanagementsystem.dto.user;
+package com.pinarehedli.springlibrarymanagementsystem.model.dto.user;
 
-import com.pinarehedli.springlibrarymanagementsystem.dto.role.RoleDTO;
-import com.pinarehedli.springlibrarymanagementsystem.entity.Role;
+import com.pinarehedli.springlibrarymanagementsystem.model.dto.role.RoleDTO;
 import lombok.Builder;
 import lombok.Data;
 

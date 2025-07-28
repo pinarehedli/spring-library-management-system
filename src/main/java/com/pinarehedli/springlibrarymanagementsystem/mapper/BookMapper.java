@@ -1,9 +1,9 @@
 package com.pinarehedli.springlibrarymanagementsystem.mapper;
 
-import com.pinarehedli.springlibrarymanagementsystem.dto.book.BookDTO;
-import com.pinarehedli.springlibrarymanagementsystem.dto.book.BookRequest;
-import com.pinarehedli.springlibrarymanagementsystem.entity.Book;
-import com.pinarehedli.springlibrarymanagementsystem.entity.Category;
+import com.pinarehedli.springlibrarymanagementsystem.model.dto.book.BookDTO;
+import com.pinarehedli.springlibrarymanagementsystem.model.request.book.CreateBookRequest;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.Book;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.Category;
 
 public class BookMapper {
 
@@ -20,7 +20,7 @@ public class BookMapper {
 
 	}
 
-	public static Book fromRequest(BookRequest request, Category category) {
+	public static Book fromRequest(CreateBookRequest request, Category category) {
 		return Book.builder()
 				.title(request.getTitle())
 				.author(request.getAuthor())

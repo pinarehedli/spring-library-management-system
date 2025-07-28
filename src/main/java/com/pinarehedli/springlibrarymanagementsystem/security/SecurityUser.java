@@ -1,6 +1,6 @@
 package com.pinarehedli.springlibrarymanagementsystem.security;
 
-import com.pinarehedli.springlibrarymanagementsystem.entity.User;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

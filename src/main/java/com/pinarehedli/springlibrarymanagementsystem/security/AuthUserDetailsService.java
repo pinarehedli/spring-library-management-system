@@ -1,7 +1,7 @@
 package com.pinarehedli.springlibrarymanagementsystem.security;
 
-import com.pinarehedli.springlibrarymanagementsystem.entity.User;
-import com.pinarehedli.springlibrarymanagementsystem.exception.UserNotFoundException;
+import com.pinarehedli.springlibrarymanagementsystem.exception.ResourceNotFoundException;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.User;
 import com.pinarehedli.springlibrarymanagementsystem.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,7 +19,7 @@ public class AuthUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepository
 				.findByUsername(username)
-				.orElseThrow(() -> new UserNotFoundException("User not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
 		return new SecurityUser(user);
 	}

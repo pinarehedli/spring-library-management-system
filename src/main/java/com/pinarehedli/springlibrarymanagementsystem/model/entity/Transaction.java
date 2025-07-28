@@ -1,5 +1,6 @@
-package com.pinarehedli.springlibrarymanagementsystem.entity;
+package com.pinarehedli.springlibrarymanagementsystem.model.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,11 +30,11 @@ public class Transaction {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "book_id")
 	private Book book;
 

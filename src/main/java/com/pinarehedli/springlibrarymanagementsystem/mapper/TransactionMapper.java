@@ -1,7 +1,7 @@
 package com.pinarehedli.springlibrarymanagementsystem.mapper;
 
-import com.pinarehedli.springlibrarymanagementsystem.dto.transaction.TransactionDTO;
-import com.pinarehedli.springlibrarymanagementsystem.entity.Transaction;
+import com.pinarehedli.springlibrarymanagementsystem.model.dto.transaction.TransactionDTO;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.Transaction;
 
 public class TransactionMapper {
 

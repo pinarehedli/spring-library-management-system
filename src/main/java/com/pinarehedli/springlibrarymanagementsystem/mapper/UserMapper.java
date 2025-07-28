@@ -1,9 +1,9 @@
 package com.pinarehedli.springlibrarymanagementsystem.mapper;
 
-import com.pinarehedli.springlibrarymanagementsystem.dto.auth.RegisterRequest;
-import com.pinarehedli.springlibrarymanagementsystem.dto.user.UserDTO;
-import com.pinarehedli.springlibrarymanagementsystem.entity.Role;
-import com.pinarehedli.springlibrarymanagementsystem.entity.User;
+import com.pinarehedli.springlibrarymanagementsystem.model.request.auth.RegisterRequest;
+import com.pinarehedli.springlibrarymanagementsystem.model.dto.user.UserDTO;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.Role;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.User;
 
 import java.math.BigDecimal;
 import java.util.Set;

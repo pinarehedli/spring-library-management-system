@@ -1,6 +1,6 @@
 package com.pinarehedli.springlibrarymanagementsystem.repository;
 
-import com.pinarehedli.springlibrarymanagementsystem.entity.Role;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

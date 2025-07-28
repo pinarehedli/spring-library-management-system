@@ -1,7 +1,7 @@
 package com.pinarehedli.springlibrarymanagementsystem.mapper;
 
-import com.pinarehedli.springlibrarymanagementsystem.dto.role.RoleDTO;
-import com.pinarehedli.springlibrarymanagementsystem.entity.Role;
+import com.pinarehedli.springlibrarymanagementsystem.model.dto.role.RoleDTO;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.Role;
 
 public class RoleMapper {
 

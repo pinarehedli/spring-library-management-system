@@ -1,5 +1,6 @@
-package com.pinarehedli.springlibrarymanagementsystem.entity;
+package com.pinarehedli.springlibrarymanagementsystem.model.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,10 +45,10 @@ public class Book {
 	@JoinColumn(name = "category_id")
 	private Category category;
 
-	@OneToMany(mappedBy = "book")
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	private List<Transaction> transactions;
 
-	@OneToMany(mappedBy = "book")
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	private List<Borrowing> borrowings;
 
 }

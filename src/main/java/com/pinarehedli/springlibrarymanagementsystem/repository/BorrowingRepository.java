@@ -1,6 +1,6 @@
 package com.pinarehedli.springlibrarymanagementsystem.repository;
 
-import com.pinarehedli.springlibrarymanagementsystem.entity.Borrowing;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.Borrowing;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

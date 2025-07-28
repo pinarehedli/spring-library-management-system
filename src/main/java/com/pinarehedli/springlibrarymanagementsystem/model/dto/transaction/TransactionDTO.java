@@ -1,4 +1,4 @@
-package com.pinarehedli.springlibrarymanagementsystem.dto.transaction;
+package com.pinarehedli.springlibrarymanagementsystem.model.dto.transaction;
 
 import lombok.Builder;
 import lombok.Data;

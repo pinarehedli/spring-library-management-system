@@ -1,4 +1,4 @@
-package com.pinarehedli.springlibrarymanagementsystem.dto.borrowing;
+package com.pinarehedli.springlibrarymanagementsystem.model.dto.borrowing;
 
 import lombok.Builder;
 import lombok.Data;

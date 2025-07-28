@@ -1,4 +1,4 @@
-package com.pinarehedli.springlibrarymanagementsystem.dto.category;
+package com.pinarehedli.springlibrarymanagementsystem.model.dto.category;
 
 import lombok.Builder;
 import lombok.Data;

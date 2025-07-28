@@ -1,4 +1,4 @@
-package com.pinarehedli.springlibrarymanagementsystem.entity;
+package com.pinarehedli.springlibrarymanagementsystem.model.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

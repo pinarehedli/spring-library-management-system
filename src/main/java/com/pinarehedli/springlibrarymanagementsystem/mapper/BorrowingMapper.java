@@ -1,7 +1,7 @@
 package com.pinarehedli.springlibrarymanagementsystem.mapper;
 
-import com.pinarehedli.springlibrarymanagementsystem.dto.borrowing.BorrowingDTO;
-import com.pinarehedli.springlibrarymanagementsystem.entity.Borrowing;
+import com.pinarehedli.springlibrarymanagementsystem.model.dto.borrowing.BorrowingDTO;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.Borrowing;
 
 public class BorrowingMapper {
 

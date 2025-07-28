@@ -1,8 +1,8 @@
 package com.pinarehedli.springlibrarymanagementsystem.mapper;
 
-import com.pinarehedli.springlibrarymanagementsystem.dto.category.CategoryDTO;
-import com.pinarehedli.springlibrarymanagementsystem.dto.category.CategoryRequest;
-import com.pinarehedli.springlibrarymanagementsystem.entity.Category;
+import com.pinarehedli.springlibrarymanagementsystem.model.dto.category.CategoryDTO;
+import com.pinarehedli.springlibrarymanagementsystem.model.request.category.CategoryRequest;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.Category;
 
 public class CategoryMapper {
 

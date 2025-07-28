@@ -1,4 +1,4 @@
-package com.pinarehedli.springlibrarymanagementsystem.dto.role;
+package com.pinarehedli.springlibrarymanagementsystem.model.dto.role;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

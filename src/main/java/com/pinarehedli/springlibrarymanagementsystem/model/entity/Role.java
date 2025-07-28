@@ -1,4 +1,4 @@
-package com.pinarehedli.springlibrarymanagementsystem.entity;
+package com.pinarehedli.springlibrarymanagementsystem.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,8 +29,5 @@ public class Role {
 	private Long id;
 
 	private String name;
-
-	@ManyToMany(mappedBy = "roles")
-	private Set<User> users = new HashSet<>();
 
 }
