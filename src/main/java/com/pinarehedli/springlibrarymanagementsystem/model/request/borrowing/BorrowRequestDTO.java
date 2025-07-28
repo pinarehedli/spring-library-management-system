@@ -1,4 +1,4 @@
-package com.pinarehedli.springlibrarymanagementsystem.model.dto.borrowing;
+package com.pinarehedli.springlibrarymanagementsystem.model.request.borrowing;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;

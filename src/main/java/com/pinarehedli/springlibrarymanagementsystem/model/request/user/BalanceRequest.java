@@ -1,4 +1,4 @@
-package com.pinarehedli.springlibrarymanagementsystem.model.dto.user;
+package com.pinarehedli.springlibrarymanagementsystem.model.request.user;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;

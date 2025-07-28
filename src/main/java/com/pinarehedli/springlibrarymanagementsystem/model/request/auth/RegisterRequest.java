@@ -1,4 +1,4 @@
-package com.pinarehedli.springlibrarymanagementsystem.model.dto.auth;
+package com.pinarehedli.springlibrarymanagementsystem.model.request.auth;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
