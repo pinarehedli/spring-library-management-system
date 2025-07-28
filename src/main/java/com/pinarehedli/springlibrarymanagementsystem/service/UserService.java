@@ -1,11 +1,10 @@
 package com.pinarehedli.springlibrarymanagementsystem.service;
 
-import com.pinarehedli.springlibrarymanagementsystem.dto.user.BalanceRequest;
-import com.pinarehedli.springlibrarymanagementsystem.dto.user.UserDTO;
-import com.pinarehedli.springlibrarymanagementsystem.entity.Role;
-import com.pinarehedli.springlibrarymanagementsystem.entity.User;
-import com.pinarehedli.springlibrarymanagementsystem.exception.RoleNotFoundException;
-import com.pinarehedli.springlibrarymanagementsystem.exception.UserNotFoundException;
+import com.pinarehedli.springlibrarymanagementsystem.exception.ResourceNotFoundException;
+import com.pinarehedli.springlibrarymanagementsystem.model.request.user.BalanceRequest;
+import com.pinarehedli.springlibrarymanagementsystem.model.dto.user.UserDTO;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.Role;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.User;
 import com.pinarehedli.springlibrarymanagementsystem.mapper.UserMapper;
 import com.pinarehedli.springlibrarymanagementsystem.repository.RoleRepository;
 import com.pinarehedli.springlibrarymanagementsystem.repository.UserRepository;
@@ -27,17 +26,26 @@ public class UserService {
 	public UserDTO getUserProfile(String username) {
 		User user = userRepository
 				.findByUsername(username)
-				.orElseThrow(() -> new UserNotFoundException("User not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
 		return UserMapper.toDTO(user);
 	}
 
-	public BigDecimal addBalance(String username, BalanceRequest balance) {
+	public BigDecimal addBalance(BalanceRequest request) {
 		User user = userRepository
-				.findByUsername(username)
-				.orElseThrow(() -> new UserNotFoundException("User not found"));
+				.findByUsername(request.getUsername())
+				.orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
-		user.setBalance(user.getBalance().add(balance.getBalance()));
+		BigDecimal fine = user.getFine();
+		BigDecimal balance = user.getBalance().add(request.getBalance());
+
+		if (balance.compareTo(fine) >= 0) {
+			user.setBalance(balance.subtract(fine));
+			user.setFine(BigDecimal.valueOf(0.0));
+		} else {
+			user.setBalance(BigDecimal.valueOf(0.0));
+			user.setFine(fine.subtract(balance));
+		}
 
 		userRepository.save(user);
 
@@ -48,11 +56,11 @@ public class UserService {
 	public void addRoleToUser(String username, String roleName) {
 		User user = userRepository
 				.findByUsername(username)
-				.orElseThrow(() -> new UserNotFoundException("User not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
 		Role role = roleRepository
 				.getRoleByName(roleName)
-				.orElseThrow(() -> new RoleNotFoundException("Role not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("Role not found"));
 
 		user.getRoles().add(role);
 		userRepository.save(user);
@@ -62,11 +70,11 @@ public class UserService {
 	public void removeRoleFromUser(String username, String roleName) {
 		User user = userRepository
 				.findByUsername(username)
-				.orElseThrow(() -> new UserNotFoundException("User not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
 		Role role = roleRepository
 				.getRoleByName(roleName)
-				.orElseThrow(() -> new RoleNotFoundException("Role not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("Role not found"));
 
 		user.getRoles().remove(role);
 		userRepository.save(user);
@@ -80,7 +88,7 @@ public class UserService {
 		if (user.getRoles() == null || user.getRoles().isEmpty()) {
 			Role role = roleRepository
 					.getRoleByName("USER")
-					.orElseThrow(() -> new RoleNotFoundException("Role not found"));
+					.orElseThrow(() -> new ResourceNotFoundException("Role not found"));
 
 			user.getRoles().add(role);
 		}

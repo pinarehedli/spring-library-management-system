@@ -1,14 +1,15 @@
 package com.pinarehedli.springlibrarymanagementsystem.service;
 
-import com.pinarehedli.springlibrarymanagementsystem.dto.auth.AuthResponse;
-import com.pinarehedli.springlibrarymanagementsystem.dto.auth.LoginRequest;
-import com.pinarehedli.springlibrarymanagementsystem.dto.auth.RefreshTokenRequest;
-import com.pinarehedli.springlibrarymanagementsystem.dto.auth.RegisterRequest;
-import com.pinarehedli.springlibrarymanagementsystem.entity.Role;
-import com.pinarehedli.springlibrarymanagementsystem.entity.User;
-import com.pinarehedli.springlibrarymanagementsystem.exception.RoleNotFoundException;
+import com.pinarehedli.springlibrarymanagementsystem.exception.ResourceNotFoundException;
+import com.pinarehedli.springlibrarymanagementsystem.model.response.AuthResponse;
+import com.pinarehedli.springlibrarymanagementsystem.model.request.auth.LoginRequest;
+import com.pinarehedli.springlibrarymanagementsystem.model.request.auth.RefreshTokenRequest;
+import com.pinarehedli.springlibrarymanagementsystem.model.request.auth.RegisterRequest;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.Role;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.User;
 import com.pinarehedli.springlibrarymanagementsystem.mapper.UserMapper;
 import com.pinarehedli.springlibrarymanagementsystem.repository.RoleRepository;
+import com.pinarehedli.springlibrarymanagementsystem.repository.UserRepository;
 import com.pinarehedli.springlibrarymanagementsystem.security.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +18,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +30,7 @@ public class AuthService {
 	private final UserService userService;
 	private final JwtService jwtService;
 	private final RoleRepository roleRepository;
+	private final UserRepository userRepository;
 
 	public AuthResponse login(LoginRequest request) {
 
@@ -51,9 +55,15 @@ public class AuthService {
 
 	public AuthResponse register(RegisterRequest request) {
 
+		Optional<User> foundUser = userRepository.getUserByUsername(request.getUsername());
+
+		if (foundUser.isPresent()) {
+			throw new RuntimeException("Username already exists");
+		}
+
 		Role role = roleRepository
 				.getRoleByName("USER")
-				.orElseThrow(() -> new RoleNotFoundException("Role not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("Role not found"));
 
 		User user = UserMapper.toEntityFromRequest(request, role);
 

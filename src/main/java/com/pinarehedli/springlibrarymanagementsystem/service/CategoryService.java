@@ -1,9 +1,9 @@
 package com.pinarehedli.springlibrarymanagementsystem.service;
 
-import com.pinarehedli.springlibrarymanagementsystem.dto.category.CategoryDTO;
-import com.pinarehedli.springlibrarymanagementsystem.dto.category.CategoryRequest;
-import com.pinarehedli.springlibrarymanagementsystem.entity.Category;
-import com.pinarehedli.springlibrarymanagementsystem.exception.CategoryNotFoundException;
+import com.pinarehedli.springlibrarymanagementsystem.exception.ResourceNotFoundException;
+import com.pinarehedli.springlibrarymanagementsystem.model.dto.category.CategoryDTO;
+import com.pinarehedli.springlibrarymanagementsystem.model.request.category.CategoryRequest;
+import com.pinarehedli.springlibrarymanagementsystem.model.entity.Category;
 import com.pinarehedli.springlibrarymanagementsystem.mapper.CategoryMapper;
 import com.pinarehedli.springlibrarymanagementsystem.repository.CategoryRepository;
 import jakarta.validation.constraints.Min;
@@ -30,7 +30,7 @@ public class CategoryService {
 	public CategoryDTO findCategoryById(@Min(1) Long id) {
 		Category category = categoryRepository
 				.findById(id)
-				.orElseThrow(() -> new CategoryNotFoundException("Category not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("Category not found"));
 
 		return CategoryMapper.toDTO(category);
 	}
@@ -46,7 +46,7 @@ public class CategoryService {
 	public CategoryDTO updateCategory(CategoryRequest request, Long id) {
 		Category category = categoryRepository
 				.findById(id)
-				.orElseThrow(() -> new CategoryNotFoundException("Category not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("Category not found"));
 
 		category.setName(request.getName());
 
@@ -59,7 +59,7 @@ public class CategoryService {
 	public void deleteCategory(Long id) {
 		Category category = categoryRepository
 				.findById(id)
-				.orElseThrow(() -> new CategoryNotFoundException("Category not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("Category not found"));
 
 		categoryRepository.delete(category);
 	}
