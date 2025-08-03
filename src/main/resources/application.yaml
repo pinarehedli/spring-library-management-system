@@ -16,10 +16,9 @@ spring:
       name: user
       password: 1234
 
-# JWT Configuration
 jwt:
   secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
   access-token:
-    expiration: 3600000  # 5 minutes in milliseconds
+    expiration: 3000000  # 5 minutes in milliseconds
   refresh-token:
     expiration: 3600000  # 1 hour in milliseconds
