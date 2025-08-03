@@ -60,11 +60,9 @@ public class BookController {
 	}
 
 	@PutMapping("/{id}")
-//	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<BookDTO> updateBook(@Valid @RequestBody UpdateBookRequest request,
 	                                          @Min(1) @PathVariable Long id) {
-
-		System.out.println("Request reached");
 		return ResponseEntity.ok(bookService.updateBook(request, id));
 	}
 
@@ -75,4 +73,3 @@ public class BookController {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }
-
