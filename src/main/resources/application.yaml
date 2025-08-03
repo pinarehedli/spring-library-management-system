@@ -3,18 +3,18 @@ spring:
     name: spring-library-management-system
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/orient
-    username: postgres
-    password: 1234
+    url: your_url
+    username: your_username
+    password: your_password
     hikari:
-      schema: spring
+      schema: your_schema
   jpa:
     hibernate:
       ddl-auto: update
   security:
     user:
-      name: user
-      password: 1234
+      name: your_name
+      password: your_password
 
 jwt:
   secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
