@@ -18,6 +18,15 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ErrorResponse> handleException(
+			Exception exception,
+			HttpServletRequest request
+	) {
+		ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST, exception.getMessage(), request.getRequestURI());
+
+		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+	}
 
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<ErrorResponse> handleResourceNotFoundException(
